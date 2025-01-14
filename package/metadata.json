@@ -9,7 +9,7 @@
         "Category": "Utilities",
         "Description": "Track and configure your progress",
         "Icon": "view-task",
-        "Id": "com.github.PortikSzabolcs.progressindicator",
+        "Id": "com.github.PortikSzabolcs.progress-indicator",
         "Name": "Custom progress indicator",
         "License": "MIT",
         "Version": "1.0",
