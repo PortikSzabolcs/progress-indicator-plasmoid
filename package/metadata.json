@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "portik.szabolcs.02@gmail.com",
+                "Name": "Portik Szabolcs"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "Custom progress indicator for tracking task progress",
+        "EnabledByDefault": true,
+        "Icon": "redshift-status-on",
+        "Id": "com.github.PortikSzabolcs.progressindicator",
+        "Name": "Custom progress indicator",
+        "Version": "1.0",
+        "Website": "https://github.com/PortikSzabolcs"
+    },
+    "Keywords": "Progress;Progress bar;Task;Work;",
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "KPackageStructure": "Plasma/Applet"
+}
