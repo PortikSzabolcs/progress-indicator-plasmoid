@@ -7,13 +7,13 @@
             }
         ],
         "Category": "Utilities",
-        "Description": "Custom progress indicator for tracking task progress",
-        "EnabledByDefault": true,
-        "Icon": "redshift-status-on",
+        "Description": "Track and configure your progress",
+        "Icon": "view-task",
         "Id": "com.github.PortikSzabolcs.progressindicator",
         "Name": "Custom progress indicator",
+        "License": "MIT",
         "Version": "1.0",
-        "Website": "https://github.com/PortikSzabolcs"
+        "Website": "https://github.com/PortikSzabolcs/progress-indicator-plasmoid"
     },
     "Keywords": "Progress;Progress bar;Task;Work;",
     "X-Plasma-API": "declarativeappletscript",
