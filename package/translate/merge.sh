@@ -5,13 +5,6 @@
 # https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems/Outside_KDE_repositories
 # https://invent.kde.org/sysadmin/l10n-scripty/-/blob/master/extract-messages.sh
 
-# DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
-# plasmoidName=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Name"`
-# widgetName="${plasmoidName##*.}" # Strip namespace
-# website=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Website"`
-# bugAddress="$website"
-# packageRoot=".." # Root of translatable sources
-# projectName="plasma_applet_${plasmoidName}" # project name
 DIR=`cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd`
 # plasmoidName=`kreadconfig5 --file="$DIR/../metadata.desktop" --group="Desktop Entry" --key="X-KDE-PluginInfo-Name"`
 plasmoidName='com.github.PortikSzabolcs.progress-indicator'
@@ -58,24 +51,6 @@ fi
 #---
 echoGray "[translate/merge] Extracting messages"
 potArgs="--from-code=UTF-8 --width=200 --add-location=file"
-
-# Note: xgettext v0.20.1 (Kubuntu 20.04) and below will attempt to translate Icon,
-# so we need to specify Name, GenericName, Comment, and Keywords.
-# https://github.com/Zren/plasma-applet-lib/issues/1
-# https://savannah.gnu.org/support/?108887
-# find "${packageRoot}" -name '*.json' | sort > "${DIR}/infiles.list"
-# xgettext \
-# 	${potArgs} \
-# 	--files-from="${DIR}/infiles.list" \
-# 	--language=Desktop \
-# 	-k -kName -kGenericName -kComment -kKeywords \
-# 	-D "${packageRoot}" \
-# 	-D "${DIR}" \
-# 	-o "template.pot.new" \
-# 	|| \
-# 	{ echoRed "[translate/merge] error while calling xgettext. aborting."; exit 1; }
-
-# sed -i 's/"Content-Type: text\/plain; charset=CHARSET\\n"/"Content-Type: text\/plain; charset=UTF-8\\n"/' "template.pot.new"
 
 touch template.pot.new
 # See Ki18n's extract-messages.sh for a full example:
@@ -198,62 +173,6 @@ for cat in $catalogs; do
 	mv "$cat.new" "$cat"
 done
 echoGray "[translate/merge] Done merging messages"
-
-#---
-# echoGray "[translate/merge] Updating .desktop file"
-
-# # Generate LINGUAS for msgfmt
-# if [ -f "$DIR/LINGUAS" ]; then
-# 	rm "$DIR/LINGUAS"
-# fi
-# touch "$DIR/LINGUAS"
-# for cat in $catalogs; do
-# 	catLocale=`basename ${cat%.*}`
-# 	echo "${catLocale}" >> "$DIR/LINGUAS"
-# done
-
-# cp -f "$DIR/../metadata.desktop" "$DIR/template.desktop"
-# sed -i '/^Name\[/ d; /^GenericName\[/ d; /^Comment\[/ d; /^Keywords\[/ d' "$DIR/template.desktop"
-
-# msgfmt \
-# 	--desktop \
-# 	--template="$DIR/template.desktop" \
-# 	-d "$DIR/" \
-# 	-o "$DIR/new.desktop"
-
-# # Delete empty msgid messages that used the po header
-# if [ ! -z "$(grep '^Name=$' "$DIR/new.desktop")" ]; then
-# 	echo "[translate/merge] Name in metadata.desktop is empty!"
-# 	sed -i '/^Name\[/ d' "$DIR/new.desktop"
-# fi
-# if [ ! -z "$(grep '^GenericName=$' "$DIR/new.desktop")" ]; then
-# 	echo "[translate/merge] GenericName in metadata.desktop is empty!"
-# 	sed -i '/^GenericName\[/ d' "$DIR/new.desktop"
-# fi
-# if [ ! -z "$(grep '^Comment=$' "$DIR/new.desktop")" ]; then
-# 	echo "[translate/merge] Comment in metadata.desktop is empty!"
-# 	sed -i '/^Comment\[/ d' "$DIR/new.desktop"
-# fi
-# if [ ! -z "$(grep '^Keywords=$' "$DIR/new.desktop")" ]; then
-# 	echo "[translate/merge] Keywords in metadata.desktop is empty!"
-# 	sed -i '/^Keywords\[/ d' "$DIR/new.desktop"
-# fi
-
-# # Place translations at the bottom of the desktop file.
-# translatedLines=`cat "$DIR/new.desktop" | grep "]="`
-# if [ ! -z "${translatedLines}" ]; then
-# 	sed -i '/^Name\[/ d; /^GenericName\[/ d; /^Comment\[/ d; /^Keywords\[/ d' "$DIR/new.desktop"
-# 	if [ "$(tail -c 2 "$DIR/new.desktop" | wc -l)" != "2" ]; then
-# 		# Does not end with 2 empty lines, so add an empty line.
-# 		echo "" >> "$DIR/new.desktop"
-# 	fi
-# 	echo "${translatedLines}" >> "$DIR/new.desktop"
-# fi
-
-# Cleanup
-# mv "$DIR/new.desktop" "$DIR/../metadata.desktop"
-# rm "$DIR/template.desktop"
-# rm "$DIR/LINGUAS"
 
 #---
 # Populate ReadMe.md
