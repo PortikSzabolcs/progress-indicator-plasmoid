@@ -1,0 +1,46 @@
+# Translation of progress-indicator in hu
+# Copyright (C) 2025
+# This file is distributed under the same license as the progress-indicator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: progress-indicator\n"
+"Report-Msgid-Bugs-To: https://github.com/PortikSzabolcs/progress-indicator-plasmoid\n"
+"POT-Creation-Date: 2025-01-16 22:18+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Portik Szabolcs\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contents/ui/main.qml
+msgid "Progress tracker"
+msgstr "Folyamatjelző"
+
+#: ../contents/ui/main.qml
+msgid "Task name"
+msgstr "Feladat neve"
+
+#: ../contents/ui/main.qml
+msgid "Optional"
+msgstr "Opciónális"
+
+#: ../contents/ui/main.qml
+msgid "Task target"
+msgstr "Feladat célja"
+
+#: ../contents/ui/main.qml
+msgid "Target"
+msgstr "Cél"
+
+#: ../contents/ui/main.qml
+msgid "Current progress"
+msgstr "Teljesített lépések"
+
+#: ../contents/ui/main.qml
+msgid "Current"
+msgstr "Teljesített"

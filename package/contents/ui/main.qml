@@ -16,16 +16,16 @@ Item {
         Layout.preferredHeight: 10
 
         PlasmaComponents.Label {
-            text: plasmoid.configuration.taskName ? plasmoid.configuration.taskName + ":" : plasmoid.configuration.goalValue + "/" + plasmoid.configuration.currentValue
+            text: plasmoid.configuration.taskName ? plasmoid.configuration.taskName + ":" : plasmoid.configuration.targetValue + "/" + plasmoid.configuration.currentValue
         }
 
         PlasmaComponents.ProgressBar {
-            value: plasmoid.configuration.currentValue / plasmoid.configuration.goalValue
+            value: plasmoid.configuration.currentValue / plasmoid.configuration.targetValue
             Layout.fillWidth: true
         }
 
         PlasmaComponents.Label {
-            text: Math.round(plasmoid.configuration.currentValue / plasmoid.configuration.goalValue * 100) + "%"
+            text: Math.round(plasmoid.configuration.currentValue / plasmoid.configuration.targetValue * 100) + "%"
         }
 
         MouseArea {
@@ -45,19 +45,19 @@ Item {
 
         PlasmaExtras.Heading {
             level: 1
-            text: "Progress tracker"
+            text: i18n("Progress tracker")
         }
         RowLayout {
 
             PlasmaComponents.Label {
-                text: Math.round(plasmoid.configuration.currentValue / plasmoid.configuration.goalValue * 100) + "%"
+                text: Math.round(plasmoid.configuration.currentValue / plasmoid.configuration.targetValue * 100) + "%"
             }
             PlasmaComponents.ProgressBar {
-                value: plasmoid.configuration.currentValue / plasmoid.configuration.goalValue
+                value: plasmoid.configuration.currentValue / plasmoid.configuration.targetValue
                 Layout.fillWidth: true
             }
             PlasmaComponents.Label {
-                text: plasmoid.configuration.currentValue + "/" + plasmoid.configuration.goalValue
+                text: plasmoid.configuration.currentValue + "/" + plasmoid.configuration.targetValue
             }
         }
         RowLayout {
@@ -65,11 +65,11 @@ Item {
 
             ColumnLayout {
                 PlasmaComponents.Label {
-                    text: "Task name"
+                    text: i18n("Task name")
                 }
                 PlasmaComponents.TextField {
                     id: taskField
-                    placeholderText: "Optional"
+                    placeholderText: i18n("Optional")
                     text: plasmoid.configuration.taskName
                     Layout.fillWidth: true
                     onEditingFinished: {
@@ -79,15 +79,15 @@ Item {
             }
             ColumnLayout {
                 PlasmaComponents.Label {
-                    text: "Task goal"
+                    text: i18n("Task target")
                 }
                 PlasmaComponents.TextField {
-                    id: goalField
-                    placeholderText: "Goal"
-                    text: plasmoid.configuration.goalValue
+                    id: targetField
+                    placeholderText: i18n("Target")
+                    text: plasmoid.configuration.targetValue
                     Layout.fillWidth: true
                     onEditingFinished: {
-                        plasmoid.configuration.goalValue = parseFloat(goalField.text);
+                        plasmoid.configuration.targetValue = parseFloat(targetField.text);
                     }
                     validator: IntValidator {
                         bottom: 0
@@ -98,7 +98,7 @@ Item {
         }
         ColumnLayout {
             PlasmaComponents.Label {
-                text: "Current progress"
+                text: i18n("Current progress")
             }
             RowLayout {
                 PlasmaComponents.Button {
@@ -110,7 +110,7 @@ Item {
                 }
                 PlasmaComponents.TextField {
                     id: currentField
-                    placeholderText: "Current"
+                    placeholderText: i18n("Current")
                     text: plasmoid.configuration.currentValue
                     Layout.fillWidth: true
                     onEditingFinished: {
@@ -118,13 +118,13 @@ Item {
                     }
                     validator: IntValidator {
                         bottom: 0
-                        top: plasmoid.configuration.goalValue
+                        top: plasmoid.configuration.targetValue
                     }
                 }
                 PlasmaComponents.Button {
                     icon.name: "gtk-add"
                     onClicked: {
-                        if (plasmoid.configuration.currentValue < plasmoid.configuration.goalValue)
+                        if (plasmoid.configuration.currentValue < plasmoid.configuration.targetValue)
                             plasmoid.configuration.currentValue++;
                     }
                 }

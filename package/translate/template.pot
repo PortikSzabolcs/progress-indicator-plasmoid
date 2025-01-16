@@ -1,0 +1,46 @@
+# Translation of progress-indicator in LANGUAGE
+# Copyright (C) 2025
+# This file is distributed under the same license as the progress-indicator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: progress-indicator\n"
+"Report-Msgid-Bugs-To: https://github.com/PortikSzabolcs/progress-indicator-plasmoid\n"
+"POT-Creation-Date: 2025-01-16 22:18+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contents/ui/main.qml
+msgid "Progress tracker"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Task name"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Optional"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Task target"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Target"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Current progress"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Current"
+msgstr ""
